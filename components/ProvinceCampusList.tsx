@@ -102,8 +102,10 @@ export default function ProvinceCampusList({
         </div>
 
         <p className="text-sm text-gray-500">
-          Angka mengikuti file data yang diberikan; 0 berarti belum ada
-          mahasiswa tercatat di file, bukan verifikasi jumlah terkini.
+          Jumlah mahasiswa mengacu pada file PDDikti yang diberikan. Jika
+          tertulis “Tidak tercantum di file PDDikti”, berarti file tersebut tidak
+          mencantumkan jumlah mahasiswa kampus itu—bukan berarti kampusnya tidak
+          memiliki mahasiswa.
         </p>
       </div>
 
@@ -134,8 +136,8 @@ export default function ProvinceCampusList({
                   </p>
                   <span className="mt-3 inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-800">
                     {campus.students === 0
-                      ? "Belum ada mahasiswa tercatat di file"
-                      : `${campus.students.toLocaleString("id-ID")} mahasiswa tercatat di file`}
+                      ? "Jumlah mahasiswa tidak tercantum di file PDDikti"
+                      : `${campus.students.toLocaleString("id-ID")} mahasiswa (file PDDikti)`}
                   </span>
                 </li>
               ))}
