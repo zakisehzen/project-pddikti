@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Fitur
+
+- Grafik dan tabel jumlah mahasiswa per provinsi.
+- Pilih nama provinsi di tabel atau batang grafik untuk melihat perguruan tinggi
+  di provinsi tersebut beserta jumlah mahasiswa per kampus. Data kampus
+  diagregasi dari file `Mahasiswa Terdaftar.xlsx` yang diberikan dan
+  diverifikasi agar total setiap provinsi tetap sama dengan grafik.
+
 ## Getting Started
 
 First, run the development server:

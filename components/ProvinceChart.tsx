@@ -12,7 +12,13 @@ import {
 
 import { provinceData } from "../app/data/provinceData";
 
-export default function ProvinceChart() {
+interface ProvinceChartProps {
+  onSelectProvince: (province: string) => void;
+}
+
+export default function ProvinceChart({
+  onSelectProvince,
+}: ProvinceChartProps) {
   const data = [...provinceData].sort(
     (a, b) => b.jumlah - a.jumlah
   );
@@ -55,6 +61,11 @@ export default function ProvinceChart() {
           <Bar
             dataKey="jumlah"
             name="Jumlah Mahasiswa"
+            cursor="pointer"
+            onClick={(_entry, index) => {
+              const province = data[index]?.provinsi;
+              if (province) onSelectProvince(province);
+            }}
           />
         </BarChart>
       </ResponsiveContainer>

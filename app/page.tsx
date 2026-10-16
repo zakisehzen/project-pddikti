@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { provinceData, totalMahasiswa } from "./data/provinceData";
 import ProvinceChart from "../components/ProvinceChart";
+import ProvinceCampusList from "../components/ProvinceCampusList";
 
 export default function Home() {
   const [search, setSearch] = useState("");
+  const [selectedProvince, setSelectedProvince] = useState<string | null>(null);
 
   const sortedData = [...provinceData].sort(
     (a, b) => b.jumlah - a.jumlah
@@ -33,7 +35,7 @@ export default function Home() {
 
           <p className="mt-3 max-w-3xl text-blue-100">
             Statistik jumlah mahasiswa perguruan tinggi se-Indonesia
-            berdasarkan data PDDIKTI Tahun 2025.
+            berdasarkan file data mahasiswa terdaftar.
           </p>
         </header>
 
@@ -100,7 +102,19 @@ export default function Home() {
             Perbandingan jumlah mahasiswa terdaftar pada setiap provinsi.
           </p>
 
-          <ProvinceChart />
+          <p className="mb-4 text-sm text-gray-500">
+            Tekan batang grafik atau nama provinsi untuk melihat perguruan
+            tinggi di daerah tersebut.
+          </p>
+
+          <ProvinceChart onSelectProvince={setSelectedProvince} />
+
+          {selectedProvince && (
+            <ProvinceCampusList
+              key={selectedProvince}
+              province={selectedProvince}
+            />
+          )}
         </section>
 
         <section className="mt-6 rounded-2xl bg-white p-6 shadow-lg">
@@ -158,8 +172,19 @@ export default function Home() {
                         {index + 1}
                       </td>
 
-                      <td className="p-3 font-medium text-gray-800">
-                        {item.provinsi}
+                      <td className="p-3 font-medium">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProvince(item.provinsi)}
+                          aria-pressed={selectedProvince === item.provinsi}
+                          className={`rounded text-left text-blue-700 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+                            selectedProvince === item.provinsi
+                              ? "font-bold"
+                              : "font-medium"
+                          }`}
+                        >
+                          {item.provinsi}
+                        </button>
                       </td>
 
                       <td className="p-3 text-right font-semibold text-gray-800">
@@ -197,7 +222,7 @@ export default function Home() {
 
         <footer className="mt-6 pb-6 text-center text-sm text-gray-500">
           <p>
-            Sumber data: PDDIKTI — Data Jumlah Mahasiswa Terdaftar Tahun 2025
+            Sumber data: file Mahasiswa Terdaftar.xlsx yang diberikan
           </p>
 
           <p className="mt-1">
