@@ -6,7 +6,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Pilih nama provinsi di tabel atau batang grafik untuk melihat perguruan tinggi
   di provinsi tersebut beserta jumlah mahasiswa per kampus. Data kampus
   diagregasi dari file `Mahasiswa Terdaftar.xlsx` yang diberikan dan
-  diverifikasi agar total setiap provinsi tetap sama dengan grafik.
+  diverifikasi agar total setiap provinsi tetap sama dengan grafik. Nilai nol
+  berarti tidak ada mahasiswa tercatat pada file sumber, bukan konfirmasi
+  jumlah mahasiswa terkini di perguruan tinggi tersebut.
 
 ## Getting Started
 

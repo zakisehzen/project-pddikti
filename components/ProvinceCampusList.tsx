@@ -102,7 +102,8 @@ export default function ProvinceCampusList({
         </div>
 
         <p className="text-sm text-gray-500">
-          Angka mahasiswa sesuai file data yang diberikan
+          Angka mengikuti file data yang diberikan; 0 berarti belum ada
+          mahasiswa tercatat di file, bukan verifikasi jumlah terkini.
         </p>
       </div>
 
@@ -132,7 +133,9 @@ export default function ProvinceCampusList({
                     {campus.city} · {campus.type}
                   </p>
                   <span className="mt-3 inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-800">
-                    {campus.students.toLocaleString("id-ID")} mahasiswa
+                    {campus.students === 0
+                      ? "Belum ada mahasiswa tercatat di file"
+                      : `${campus.students.toLocaleString("id-ID")} mahasiswa tercatat di file`}
                   </span>
                 </li>
               ))}
